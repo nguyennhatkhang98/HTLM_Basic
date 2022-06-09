@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arrHocSinh = [];
+        let obj = {
+            "Ten": "Test",
+            "DiemSo": 10,
+            "HocLuc": "Trung bình"
+        }
+        arrHocSinh.push(obj);
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>==========================Menu=====================</br></li>
+        <li>1.Thêm học sinh</br></li>
+        <li>2.Xóa học sinh</br></li>
+        <li>3.Chèn học sinh</br></li>
+        <li>4.Sắp xếp học sinh</br></li>
+        <li>5.Update học lực</br></li>
+        <li>6.In ra danh sách học sinh<br /></li>
+    </ul>
+    <p>Lựa chọn của bạn là:</p>
+    <input id="scriptBox" type="text" onkeypress="return runScript(event)" />
+    <div style="display:none ;" id="infor">
+        <p>Nhập tên học sinh</p>
+        <input id="name" type="text">
+        <p>Nhập điểm</p>
+        <input id="point" type="text">
+        <p>Xếp loại</p>
+        <input id="Classification" type="text" onkeypress="return addhs(event)" />
+    </div>
+    <div id="delete" style="display: none;">
+        <p>Xóa ở vị trí:</p>
+        <input id="delete_position" type="text">
+        <p>Số lượng xóa</p>
+        <input id="delete_quantity" type="text" onkeypress="return deletehs(event)" />
+    </div>
+    <div style=" display:none ;" id="Ins_infor">
+        <p>Nhập tên học sinh</p>
+        <input id="Ins_name" type="text">
+        <p>Nhập điểm</p>
+        <input id="Ins_point" type="text">
+        <p>Xếp loại</p>
+        <input id="Ins_Classification" type="text" />
+        <p>Vị trí chèn</p>
+        <input id="Ins_position" type="text" onkeypress="return inserths(event)" />
+    </div>
+    
+    <script>
+        
+        function runScript(e) {
+            //See notes about 'which' and 'key'
+            if (e.keyCode == 13) {
+                var LuaChon = document.getElementById("scriptBox");
+                Option(LuaChon.value)
+                function Option(Chon) {
+
+                    switch (Number(Chon)) {
+                        case 1:
+                            //Hiển thị div nhập thông tin học sinh
+                            document.getElementById("infor").style.display = "block";
+                            //AddHocSinh();
+                            break;
+                        case 2:
+                            document.getElementById("delete").style.display = "block";
+                            break;
+                        case 3:
+                            document.getElementById("Ins_infor").style.display = "block";
+                            break;
+                        case 4:
+                            SapXapHocSinh();
+                            break;
+                        case 5:
+                            UpdateHocSinh();
+                            break;
+
+                        case 6:
+                            let stringName = "";
+                            for(i = 0;i<arrHocSinh.length;i++){
+                               stringName =  console.log(arrHocSinh[i].Ten);
+                            }
+                            break;
+                        default:
+                            document.write("Lựa chọn không hợp lệ");
+                            break;
+                    }
+                }
+            }
+        }
+        function AddHocSinh() {
+            let new_obj = {
+            "Ten": "",
+            "DiemSo": 0,
+            "HocLuc": ""
+            }
+            new_obj.Ten = document.getElementById("name").value;
+            new_obj.DiemSo = document.getElementById("point").value;
+            new_obj.HocLuc = document.getElementById("Classification").value;
+            arrHocSinh.push(new_obj);
+        }
+        function addhs(e) {
+            if (e.keyCode == 13) {
+                AddHocSinh();
+                alert("Thêm mới thành công");
+                document.getElementById("infor").style.display = "none";
+                document.getElementById("scriptBox").value = "";
+            }
+        }
+        function inserths(e) {
+            obj.Ten = document.getElementById("Ins_name").value;
+            obj.DiemSo = document.getElementById("Ins_point").value;
+            obj.HocLuc = document.getElementById("Ins_Classification").value;
+
+            let position = document.getElementById("Ins_position").value;
+
+            arrHocSinh.splice(Number(position), 0, obj);
+            document.getElementById("infor").style.display = "none";
+            document.getElementById("scriptBox").value = "";
+        }
+        function deletehs(e) {
+            if (e.keyCode == 13) {
+                let posi = document.getElementById("delete_position").value;
+                let quantity = document.getElementById("delete_quantity").value;
+
+                if (arrHocSinh.length < 1) {
+                    alert("Danh sách trống");
+                    document.getElementById("delete").style.display = "none";
+                    document.getElementById("scriptBox").value = "";
+                } else if ((arrHocSinh.length - 1) < posi || posi < 0) {
+                    alert("Vị trí nằm ngoài mảng");
+                    document.getElementById("delete").style.display = "none";
+                    document.getElementById("scriptBox").value = "";
+                } else {
+                    arrHocSinh.splice(Number(posi), Number(quantity))
+                }
+            }
+        }
+        function SapXapHocSinh(){
+            for(i = 0;i < arrHocSinh.length;i++){
+                for(j= i+1;j<arrHocSinh.length;j++){
+                   let s =  (arrHocSinh[i].Ten +"").localeCompare(arrHocSinh[j].Ten + "");
+                   if(s == 1){
+                       var tempObj = arrHocSinh[i];
+                       arrHocSinh[i] = arrHocSinh[j];
+                       arrHocSinh[j] = tempObj;
+                   }
+                }
+            }
+        }
+        function UpdateHocSinh(){
+            for(i = 0;i<arrHocSinh.length;i++){
+                if(Number(arrHocSinh[i].DiemSo) > 8){
+                    arrHocSinh[i].HocLuc = "Giỏi";
+                }else if(arrHocSinh[i].DiemSo > 5){
+                    arrHocSinh[i].HocLuc = "Khá";
+                }else {
+                    arrHocSinh[i].HocLuc = "Trung bình";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

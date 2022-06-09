@@ -1,0 +1,143 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    height: 2000px;
+    background-color: #f0f2f5;
+}
+#head {
+    z-index: 999;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 56px;
+    background-color: white;
+    border: 1px solid black;
+    position: fixed;
+}
+.a8c37x1j{
+    margin-bottom: 20px;
+    width: 100px;
+    
+}
+#head li {
+    display: inline;
+    
+}
+#fb{
+    margin-bottom: 20px;
+}
+svg{
+    width: 28px;
+    height: 28px;
+}
+#house {
+    margin-left: 400px;
+}
+
+#head li>img {
+    width: 40px;
+    height: auto;
+   margin-top: 5px;
+   margin-left: 5px;
+
+}
+#head li>img:hover{
+    background-color: red;
+}
+/* #anhbia{
+    position: absolute;
+} */
+#main{
+    position: relative;
+    height: auto;
+}
+.anhbia {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+    height: 500px;
+    border-radius: 5px;
+}
+#anhdaidien{
+    position: relative;
+    width: 45%;
+    margin-top: -40px;
+}
+.anhdaidien{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#name{
+    font-size: 25px;
+    font-weight: bold;
+    display: inline;
+    position: absolute;
+    right: 0px;
+    top: 80px;
+}
+.btn{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+.btnbanbe{
+    background-color: #1b74e4;
+    color: white;
+    position: absolute;
+    right: 370px;
+    bottom: 70px;
+}
+.btnnhantin{
+    position: absolute;
+    right: 250px;
+    bottom: 70px;
+    background-color: #e4e6eb;
+}
+#lines{
+    width: 1020px;
+    height: 1px;
+    background-color: black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#menu{
+    margin-left: 220px;
+    margin-top: 20px;
+}
+#menu li{
+    color: #737579;
+    display: inline;
+    font-size: 20px;
+    width: 200px;
+    padding: 10px 20px 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-family: inherit
+    
+}
+#menu li:hover{
+    background-color: aliceblue;
+}
+#mains{
+    width: 100%;
+    height: 750px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#cham{
+    display: inline;
+    width: 70px;
+    height: 70px;
+}
